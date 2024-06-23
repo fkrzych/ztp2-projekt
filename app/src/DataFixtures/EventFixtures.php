@@ -7,7 +7,6 @@ namespace App\DataFixtures;
 
 use App\Entity\Category;
 use App\Entity\Event;
-use App\Entity\Tag;
 use Doctrine\Common\DataFixtures\DependentFixtureInterface;
 
 /**

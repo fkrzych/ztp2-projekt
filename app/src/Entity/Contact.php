@@ -6,8 +6,6 @@
 namespace App\Entity;
 
 use App\Repository\ContactRepository;
-use Doctrine\Common\Collections\ArrayCollection;
-use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 
@@ -20,8 +18,6 @@ class Contact
 {
     /**
      * Primary key.
-     *
-     * @var int|null
      */
     #[ORM\Id]
     #[ORM\GeneratedValue]
@@ -30,8 +26,6 @@ class Contact
 
     /**
      * Name.
-     *
-     * @var string|null
      */
     #[ORM\Column(type: 'string', length: 45)]
     #[Assert\Type('string')]
@@ -41,8 +35,6 @@ class Contact
 
     /**
      * Phone.
-     *
-     * @var string|null
      */
     #[ORM\Column(type: 'string', length: 20)]
     #[Assert\Type('string')]
@@ -52,8 +44,6 @@ class Contact
 
     /**
      * Author.
-     *
-     * @var User|null
      */
     #[ORM\ManyToOne(targetEntity: User::class, fetch: 'EXTRA_LAZY')]
     #[ORM\JoinColumn(nullable: false)]
@@ -63,8 +53,6 @@ class Contact
 
     /**
      * Note.
-     *
-     * @var string|null
      */
     #[ORM\Column(type: 'text', nullable: true)]
     #[Assert\Type('string')]

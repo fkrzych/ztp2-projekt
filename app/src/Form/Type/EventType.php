@@ -7,9 +7,7 @@ namespace App\Form\Type;
 
 use App\Entity\Event;
 use App\Entity\Category;
-use App\Form\DataTransformer\TagsDataTransformer;
 use Symfony\Component\Form\AbstractType;
-use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -21,10 +19,8 @@ use Symfony\Bridge\Doctrine\Form\Type\EntityType;
  */
 class EventType extends AbstractType
 {
-
     /**
      * Constructor.
-     *
      */
     public function __construct()
     {
@@ -66,7 +62,7 @@ class EventType extends AbstractType
                 EntityType::class,
                 [
                     'class' => Category::class,
-                    'choice_label' => fn($category): string => $category->getName(),
+                    'choice_label' => fn ($category): string => $category->getName(),
                     'label' => 'label.category',
                     'placeholder' => 'label.none',
                     'required' => true,

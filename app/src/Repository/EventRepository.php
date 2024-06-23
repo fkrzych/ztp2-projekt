@@ -8,15 +8,11 @@ namespace App\Repository;
 use App\Entity\Category;
 use App\Entity\Event;
 use App\Entity\User;
-use DateTime;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
-use Doctrine\ORM\EntityManager;
-use Doctrine\ORM\Exception\ORMException;
 use Doctrine\ORM\NonUniqueResultException;
 use Doctrine\ORM\NoResultException;
 use Doctrine\ORM\QueryBuilder;
 use Doctrine\Persistence\ManagerRegistry;
-
 
 /**
  * Class EventRepository.
@@ -113,7 +109,7 @@ class EventRepository extends ServiceEntityRepository
      */
     public function queryCurrent(): QueryBuilder
     {
-        $now = new DateTime();
+        $now = new \DateTime();
         $currentDate = $now->format('Y-m-d H:i:s');
 
         return $this->getOrCreateQueryBuilder()
@@ -122,7 +118,7 @@ class EventRepository extends ServiceEntityRepository
             ->where('event.date >= :currentDate')
             ->join('event.category', 'category')
             ->orderBy('event.date', 'ASC')
-            ;
+        ;
     }
 
     /**
@@ -134,7 +130,7 @@ class EventRepository extends ServiceEntityRepository
      */
     public function countCurrent(User $user): array
     {
-        $now = new DateTime();
+        $now = new \DateTime();
         $currentDate = $now->format('Y-m-d H:i:s');
 
         return $this->getOrCreateQueryBuilder()
@@ -146,7 +142,7 @@ class EventRepository extends ServiceEntityRepository
             ->setParameter('author', $user)
             ->getQuery()
             ->getScalarResult()
-            ;
+        ;
     }
 
     /**
@@ -154,10 +150,10 @@ class EventRepository extends ServiceEntityRepository
      *
      * @param Category $category Category
      *
+     * @return int Number of events in category
+     *
      * @throws NoResultException
      * @throws NonUniqueResultException
-     *
-     * @return int Number of events in category
      */
     public function countByCategory(Category $category): int
     {
@@ -168,13 +164,13 @@ class EventRepository extends ServiceEntityRepository
             ->setParameter(':category', $category)
             ->getQuery()
             ->getSingleScalarResult()
-            ;
+        ;
     }
 
     /**
      * Save entity.
      *
-     * @param Category $category Category entity
+     * @param Event $event Event entity
      */
     public function save(Event $event): void
     {
@@ -185,7 +181,7 @@ class EventRepository extends ServiceEntityRepository
     /**
      * Delete entity.
      *
-     * @param Category $category Category entity
+     * @param Event $event Event entity
      */
     public function delete(Event $event): void
     {
@@ -219,7 +215,7 @@ class EventRepository extends ServiceEntityRepository
      *
      * @return QueryBuilder Query builder
      */
-    private function getOrCreateQueryBuilder(QueryBuilder $queryBuilder = null): QueryBuilder
+    private function getOrCreateQueryBuilder(?QueryBuilder $queryBuilder = null): QueryBuilder
     {
         return $queryBuilder ?? $this->createQueryBuilder('event');
     }

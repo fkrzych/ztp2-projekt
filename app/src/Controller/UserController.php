@@ -7,17 +7,13 @@ namespace App\Controller;
 
 use App\Entity\User;
 use App\Form\Type\UserType;
-use App\Form\Type\ChangePasswordType;
 use App\Form\Type\ChangeEntitlementsType;
 use App\Form\Type\ChangeEntitlementsDisabledType;
 use App\Service\UserServiceInterface;
-use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
-use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Contracts\Translation\TranslatorInterface;
-use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 
 /**
  * Class UserController.
@@ -143,50 +139,6 @@ class UserController extends AbstractController
         }
 
         return $this->render('user/change_entitlements.html.twig', [
-            'form' => $form->createView(),
-            'user' => $user,
-        ]);
-    }
-
-    /**
-     * Change password action.
-     *
-     * @param Request                     $request            HTTP request
-     * @param User                        $user               User entity
-     * @param UserPasswordHasherInterface $userPasswordHasher
-     * @param EntityManagerInterface      $entityManager
-     *
-     * @return Response HTTP response
-     */
-    #[\Symfony\Component\Routing\Attribute\Route('/{id}/change_password', name: 'user_change_password', requirements: ['id' => '[1-9]\d*'], methods: 'GET|PUT')]
-    public function changePassword(Request $request, User $user, UserPasswordHasherInterface $userPasswordHasher, EntityManagerInterface $entityManager): Response
-    {
-        $form = $this->createForm(ChangePasswordType::class, $user, [
-            'method' => 'PUT',
-            'action' => $this->generateUrl('user_change_password', ['id' => $user->getId()]),
-        ]);
-        $form->handleRequest($request);
-
-        if ($form->isSubmitted() && $form->isValid()) {
-            $user->setPassword(
-                $userPasswordHasher->hashPassword(
-                    $user,
-                    $form->get('password')->getData()
-                )
-            );
-
-            $entityManager->persist($user);
-            $entityManager->flush();
-
-            $this->addFlash(
-                'success',
-                $this->translator->trans('message.password_changed_successfully')
-            );
-
-            return $this->redirectToRoute('user_index');
-        }
-
-        return $this->render('user/change_password.html.twig', [
             'form' => $form->createView(),
             'user' => $user,
         ]);

@@ -5,11 +5,9 @@
 
 namespace App\Repository;
 
-use App\Entity\Category;
 use App\Entity\Contact;
 use App\Entity\User;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
-use Doctrine\ORM\EntityManager;
 use Doctrine\ORM\QueryBuilder;
 use Doctrine\Persistence\ManagerRegistry;
 
@@ -104,7 +102,7 @@ class ContactRepository extends ServiceEntityRepository
     /**
      * Save entity.
      *
-     * @param Category $category Category entity
+     * @param Contact $contact Contact entity
      */
     public function save(Contact $contact): void
     {
@@ -115,7 +113,7 @@ class ContactRepository extends ServiceEntityRepository
     /**
      * Delete entity.
      *
-     * @param Category $category Category entity
+     * @param Contact $contact Contact entity
      */
     public function delete(Contact $contact): void
     {
@@ -133,7 +131,6 @@ class ContactRepository extends ServiceEntityRepository
      */
     private function applyFiltersToList(QueryBuilder $queryBuilder, array $filters = []): QueryBuilder
     {
-
         return $queryBuilder;
     }
 
@@ -144,7 +141,7 @@ class ContactRepository extends ServiceEntityRepository
      *
      * @return QueryBuilder Query builder
      */
-    private function getOrCreateQueryBuilder(QueryBuilder $queryBuilder = null): QueryBuilder
+    private function getOrCreateQueryBuilder(?QueryBuilder $queryBuilder = null): QueryBuilder
     {
         return $queryBuilder ?? $this->createQueryBuilder('contact');
     }

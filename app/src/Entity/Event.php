@@ -6,10 +6,7 @@
 namespace App\Entity;
 
 use App\Repository\EventRepository;
-use Doctrine\Common\Collections\ArrayCollection;
-use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
-use DateTime;
 use Symfony\Component\Validator\Constraints as Assert;
 
 /**
@@ -21,8 +18,6 @@ class Event
 {
     /**
      * Primary key.
-     *
-     * @var int|null
      */
     #[ORM\Id]
     #[ORM\GeneratedValue]
@@ -31,8 +26,6 @@ class Event
 
     /**
      * Name.
-     *
-     * @var string|null
      */
     #[ORM\Column(type: 'string', length: 255)]
     #[Assert\Type('string')]
@@ -42,17 +35,13 @@ class Event
 
     /**
      * Date.
-     *
-     * @var DateTime|null
      */
     #[ORM\Column(type: 'datetime')]
-    #[Assert\Type(DateTime::class)]
-    private ?DateTime $date = null;
+    #[Assert\Type(\DateTime::class)]
+    private ?\DateTime $date = null;
 
     /**
      * Category.
-     *
-     * @var Category|null
      */
     #[ORM\ManyToOne(targetEntity: Category::class, fetch: 'EXTRA_LAZY')]
     #[Assert\Type(Category::class)]
@@ -60,18 +49,14 @@ class Event
     #[ORM\JoinColumn(nullable: false)]
     private ?Category $category = null;
 
-
     /**
      * Author.
-     *
-     * @var User|null
      */
     #[ORM\ManyToOne(targetEntity: User::class, fetch: 'EXTRA_LAZY')]
     #[ORM\JoinColumn(nullable: false)]
     #[Assert\NotBlank]
     #[Assert\Type(User::class)]
     private ?User $author = null;
-
 
     /**
      * Constructor.
@@ -113,9 +98,9 @@ class Event
     /**
      * Getter for date.
      *
-     * @return DateTime|null Date
+     * @return \DateTime|null Date
      */
-    public function getDate(): ?DateTime
+    public function getDate(): ?\DateTime
     {
         return $this->date;
     }
@@ -123,9 +108,9 @@ class Event
     /**
      * Setter for date.
      *
-     * @param DateTime $date Date
+     * @param \DateTime $date Date
      */
-    public function setDate(DateTime $date): void
+    public function setDate(\DateTime $date): void
     {
         $this->date = $date;
     }

@@ -18,12 +18,12 @@ use Knp\Component\Pager\PaginatorInterface;
 class ContactService implements ContactServiceInterface
 {
     public $tagService;
+
     /**
      * Constructor.
      *
-     * @param PaginatorInterface  $paginator         Paginator
-     * @param TagServiceInterface $tagService        Tag service
-     * @param ContactRepository   $contactRepository Contact repository
+     * @param PaginatorInterface $paginator         Paginator
+     * @param ContactRepository  $contactRepository Contact repository
      */
     public function __construct(private readonly PaginatorInterface $paginator, private readonly ContactRepository $contactRepository)
     {

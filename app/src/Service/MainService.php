@@ -51,7 +51,7 @@ class MainService implements MainServiceInterface
      */
     public function ifCurrentsExist(User $author): int
     {
-        if ($this->eventRepository->countCurrent($author) !== []) {
+        if ([] !== $this->eventRepository->countCurrent($author)) {
             return 1;
         }
 
