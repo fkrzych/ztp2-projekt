@@ -1,0 +1,22 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+    {{ 'contact.details'|trans }}
+{% endblock %}
+
+{% block body %}
+    {% if contact is defined and contact|length %}
+        <h1>{{ contact.name }}</h1>
+        <dl>
+            <dt>{{ 'label.contact_name'|trans }}</dt>
+            <dd>{{ contact.name }}</dd>
+            <dt>{{ 'label.phone'|trans }}</dt>
+            <dd>{{ contact.phone }}</dd>
+        </dl>
+    {% else %}
+        <p>
+            {{ 'message.record_not_found'|trans }}
+        </p>
+    {% endif %}
+    <a href="{{ url('contact_index') }}" title="{{ 'contacts.link'|trans }}">{{ 'contacts.link'|trans }}</a>
+{% endblock %}

@@ -1,0 +1,18 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+    {{ 'delete.contact'|trans({'%id%': contact.id|default('')}) }}
+{% endblock %}
+
+{% block body %}
+    <h1>{{ 'delete.contact'|trans({'%id%': contact.id|default('')}) }} {{ contact.name }}</h1>
+    {{ form_start(form) }}
+    {{ form_widget(form) }}
+    <div class="form-group row float-sm-right">
+        <input type="submit" value="{{ 'action.delete'|trans }}" class="btn btn-primary" />
+    </div>
+    <div class="form-group row float-sm-left">
+        <a href="{{ url('contact_index') }}" title="{{ 'contacts.link'|trans }}">{{ 'contacts.link'|trans }}</a>
+    </div>
+    {{ form_end(form) }}
+{% endblock %}

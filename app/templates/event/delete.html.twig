@@ -1,0 +1,18 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+    {{ 'delete.event'|trans({'%id%': event.id|default('')}) }}
+{% endblock %}
+
+{% block body %}
+    <h1>{{ 'delete.event'|trans({'%id%': event.id|default('')}) }} {{ event.name }}</h1>
+    {{ form_start(form) }}
+    {{ form_widget(form) }}
+    <div class="form-group row float-sm-right">
+        <input type="submit" value="{{ 'action.delete'|trans }}" class="btn btn-primary" />
+    </div>
+    <div class="form-group row float-sm-left">
+        <a href="{{ url('event_index') }}" title="{{ 'events.link'|trans }}">{{ 'events.link'|trans }}</a>
+    </div>
+    {{ form_end(form) }}
+{% endblock %}

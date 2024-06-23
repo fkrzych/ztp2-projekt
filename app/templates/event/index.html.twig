@@ -1,0 +1,60 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+    {{ 'title.event_list'|trans }}
+{% endblock %}
+
+{% block body %}
+    <h1>{{ 'title.event_list'|trans }}</h1>
+    <div class="link-space-between">
+        <a href="{{ url('main_index') }}" title="{{ 'main.link'|trans }}">{{ 'main.link'|trans }}</a>
+        <a href="{{ url('event_index') }}" title="{{ 'clear.filters'|trans }}">{{ 'clear.filters'|trans }}</a>
+        <a href="{{ url('event_create') }}" title="{{ 'create.event'|trans }}">{{ 'create.event'|trans }}</a>
+    </div>
+    {% if pagination is defined and pagination.items|length %}
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th>{{ knp_pagination_sortable(pagination, 'label.id'|trans, 'event.id') }}</th>
+                <th>{{ knp_pagination_sortable(pagination, 'label.event_name'|trans, 'event.name') }}</th>
+                <th>{{ knp_pagination_sortable(pagination, 'label.date'|trans, 'event.date') }}</th>
+                <th>{{ knp_pagination_sortable(pagination, 'label.category'|trans, 'category.name') }}</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for event in pagination.items %}
+                <tr>
+                    <td>{{ event.id }}</td>
+                    <td>{{ event.name }}</td>
+                    <td>{{ event.date|date('Y-m-d H:i:s') }}</td>
+                    <td>
+                        <a href="{{ url('event_index', {'filters.category_id' : event.category.id}) }}" title="{{ event.category.name }}">
+                            {{ event.category.name }}
+                        </a>
+                    </td>
+                    <td>
+                        <a href="{{ url('event_show', {'id': event.id}) }}" title="{{ 'show.event'|trans }}">{{ 'show.event'|trans }}</a>
+                        <a href="{{ url('event_edit', {'id': event.id}) }}" title="{{ 'edit.event'|trans }}">{{ 'edit.event'|trans }}</a>
+                        <a href="{{ url('event_delete', {'id': event.id}) }}" title="{{ 'delete.event'|trans }}">{{ 'delete.event'|trans }}</a>
+                    </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+        <div class="navigation text-center">
+            {{ knp_pagination_render(pagination) }}
+        </div>
+    {% else %}
+        <p>
+            {{ 'message.no_data'|trans }}
+        </p>
+    {% endif %}
+    <div class="link-centered">
+        <a href="{{ url('contact_index') }}" title="{{ 'contacts.link'|trans }}">{{ 'contacts.link'|trans }}</a>
+        {% if is_granted('ROLE_ADMIN') %}
+        <a href="{{ url('category_index') }}" title="{{ 'categories.link'|trans }}">{{ 'categories.link'|trans }}</a>
+        <a href="{{ url('user_index') }}" title="{{ 'users.link'|trans }}">{{ 'users.link'|trans }}</a>
+        {% endif %}
+    </div>
+
+{% endblock  %}

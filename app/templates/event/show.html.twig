@@ -1,0 +1,25 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+    {{ 'event.details'|trans }}
+{% endblock %}
+
+{% block body %}
+    {% if event is defined and event|length %}
+        <h1>{{ event.name }}</h1>
+        <a href="{{ url('main_index') }}" title="{{ 'main.link'|trans }}">{{ 'main.link'|trans }}</a>
+        <dl>
+            <dt>{{ 'label.event_name'|trans }}</dt>
+            <dd>{{ event.name }}</dd>
+            <dt>{{ 'label.date'|trans }}</dt>
+            <dd>{{ event.date|date('Y-m-d H:i:s')}}</dd>
+            <dt>{{ 'label.category'|trans}}</dt>
+            <dd>{{ event.category.name }}</dd>
+        </dl>
+    {% else %}
+        <p>
+            {{ 'message.record_not_found'|trans }}
+        </p>
+    {% endif %}
+    <a href="{{ url('event_index') }}" title="{{ 'events.link'|trans }}">{{ 'events.link'|trans }}</a>
+{% endblock %}

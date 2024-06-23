@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+    <file source-language="en" datatype="plaintext" original="file.ext">
+        <body>
+              <trans-unit id="message.email_exists">
+                  <source>message.email_exists</source>
+                  <target>Istnieje już konto używające podanego adresu email.</target>
+              </trans-unit>
+              <trans-unit id="message.password_not_match">
+                  <source>message.password_not_match</source>
+                  <target>Hasła muszą do siebie pasować.</target>
+               </trans-unit>
+               <trans-unit id="message.agree_terms">
+                  <source>message.agree_terms</source>
+                  <target>Musisz zaakceptować nasz regulamin.</target>
+               </trans-unit>
+        </body>
+    </file>
+</xliff>
+
+
+
+
+
+
+
+
+
+
+
+
+

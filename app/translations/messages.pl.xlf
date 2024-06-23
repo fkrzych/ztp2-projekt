@@ -1,0 +1,375 @@
+<?xml version="1.0"?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+  <file source-language="en" datatype="plaintext" original="file.ext">
+    <body>
+      <trans-unit id="label.actions">
+        <source>label.actions</source>
+        <target>Działania</target>
+      </trans-unit>
+      <trans-unit id="label.id">
+        <source>label.id</source>
+        <target>Id</target>
+      </trans-unit>
+      <trans-unit id="title.event_list">
+        <source>title.event_list</source>
+        <target>Wydarzenia</target>
+      </trans-unit>
+      <trans-unit id="label.event_name">
+        <source>label.event_name</source>
+        <target>Nazwa wydarzenia</target>
+      </trans-unit>
+      <trans-unit id="label.date">
+        <source>label.date</source>
+        <target>Data i godzina</target>
+      </trans-unit>
+      <trans-unit id="label.category">
+        <source>label.category</source>
+        <target>Kategoria</target>
+      </trans-unit>
+      <trans-unit id="show.event">
+         <source>show.event</source>
+         <target>Pokaż wydarzenie</target>
+      </trans-unit>
+      <trans-unit id="edit.event">
+        <source>edit.event</source>
+        <target>Edytuj wydarzenie</target>
+      </trans-unit>
+     <trans-unit id="create.event">
+         <source>create.event</source>
+         <target>Utwórz wydarzenie</target>
+      </trans-unit>
+      <trans-unit id="delete.event">
+         <source>delete.event</source>
+         <target>Usuń wydarzenie</target>
+      </trans-unit>
+      <trans-unit id="contacts.link">
+        <source>contacts.link</source>
+        <target>Kontakty</target>
+      </trans-unit>
+      <trans-unit id="events.link">
+        <source>events.link</source>
+        <target>Wydarzenia</target>
+      </trans-unit>
+      <trans-unit id="title.contact_list">
+        <source>title.contact_list</source>
+        <target>Kontakty</target>
+      </trans-unit>
+      <trans-unit id="label.contact_name">
+        <source>label.contact_name</source>
+        <target>Nazwa kontaktu</target>
+      </trans-unit>
+      <trans-unit id="label.phone">
+        <source>label.phone</source>
+        <target>Numer telefonu</target>
+      </trans-unit>
+      <trans-unit id="create.contact">
+         <source>create.contact</source>
+         <target>Utwórz kontakt</target>
+      </trans-unit>
+      <trans-unit id="show.contact">
+         <source>show.contact</source>
+         <target>Pokaż kontakt</target>
+      </trans-unit>
+      <trans-unit id="edit.contact">
+        <source>edit.contact</source>
+        <target>Edytuj kontakt</target>
+      </trans-unit>
+      <trans-unit id="delete.contact">
+        <source>delete.contact</source>
+        <target>Usuń kontakt</target>
+      </trans-unit>
+      <trans-unit id="message.no_data">
+        <source>message.no_data</source>
+        <target>Brak danych.</target>
+      </trans-unit>
+      <trans-unit id="message.record_not_found">
+        <source>message.record_not_found</source>
+        <target>Rekordu nie znaleziono.</target>
+      </trans-unit>
+       <trans-unit id="categories.link">
+        <source>categories.link</source>
+        <target>Kategorie</target>
+       </trans-unit>
+       <trans-unit id="title.category_list">
+        <source>title.category_list</source>
+        <target>Kategorie</target>
+       </trans-unit>
+       <trans-unit id="category.id">
+         <source>category.id</source>
+         <target>Id</target>
+       </trans-unit>
+       <trans-unit id="label.category_name">
+         <source>label.category_name</source>
+         <target>Nazwa kategorii</target>
+       </trans-unit>
+       <trans-unit id="create.category">
+         <source>create.category</source>
+         <target>Utwórz kategorię</target>
+       </trans-unit>
+       <trans-unit id="show.category">
+         <source>show.category</source>
+         <target>Pokaż kategorię</target>
+       </trans-unit>
+       <trans-unit id="edit.category">
+         <source>edit.category</source>
+         <target>Edytuj kategorię</target>
+       </trans-unit>
+       <trans-unit id="delete.category">
+         <source>delete.category</source>
+         <target>Usuń kategorię</target>
+       </trans-unit>
+       <trans-unit id="action.save">
+          <source>action.save</source>
+          <target>Zapisz</target>
+       </trans-unit>
+       <trans-unit id="action.delete">
+          <source>action.delete</source>
+          <target>Usuń</target>
+       </trans-unit>
+       <trans-unit id="message.created_successfully">
+          <source>message.created_successfully</source>
+          <target>Udało się poprawnie utworzyć!</target>
+       </trans-unit>
+       <trans-unit id="message.edited_successfully">
+          <source>message.edited_successfully</source>
+          <target>Udało się poprawnie edytować!</target>
+       </trans-unit>
+       <trans-unit id="message.deleted_successfully">
+          <source>message.deleted_successfully</source>
+          <target>Udało się poprawnie usunąć!</target>
+       </trans-unit>
+       <trans-unit id="message.category_contains_events">
+          <source>message.category_contains_events</source>
+          <target>Istnieją wydarzenia powiązane z tą kategorią. Nie możesz jej usunąć!</target>
+       </trans-unit>
+       <trans-unit id="message.password_changed_successfully">
+           <source>message.password_changed_successfully</source>
+           <target>Udało się poprawnie zmienić hasło!</target>
+       </trans-unit>
+       <trans-unit id="message.account_blocked">
+          <source>message.account_blocked</source>
+          <target>Twoje konto jest zablokowane.</target>
+       </trans-unit>
+       <trans-unit id="message.operation_not_permitted">
+          <source>message.operation_not_permitted</source>
+          <target>Nie możesz tego zrobić.</target>
+       </trans-unit>
+       <trans-unit id="message.current_events">
+            <source>message.current_events</source>
+            <target>Nadchodzące wydarzenia w aplikacji.</target>
+         </trans-unit>
+         <trans-unit id="message.remember_about_events">
+            <source>message.remember_about_events</source>
+            <target>Pamiętaj o twoich nadchodzących wydarzeniach w aplikacji.</target>
+         </trans-unit>
+         <trans-unit id="message.email_sent">
+            <source>message.email_sent</source>
+            <target>Email został wysłany.</target>
+         </trans-unit>
+         <trans-unit id="message.email_not_sent">
+            <source>message.email_not_sent</source>
+            <target>Nie posiadasz żadnych nadchodzących wydarzeń.</target>
+         </trans-unit>
+         <trans-unit id="message.hello">
+            <source>message.hello</source>
+            <target>Hej</target>
+         </trans-unit>
+        <trans-unit id="remind.event">
+            <source>remind.event</source>
+            <target>Przypomnij mi o nadchodzących wydarzeniach</target>
+         </trans-unit>
+       <trans-unit id="main.link">
+          <source>main.link</source>
+          <target>Nadchodzące wydarzenia</target>
+       </trans-unit>
+       <trans-unit id="title.upcoming_events_list">
+           <source>title.upcoming_events_list</source>
+           <target>Nadchodzące wydarzenia</target>
+       </trans-unit>
+       <trans-unit id="label.tags">
+            <source>label.tags</source>
+            <target>Tagi</target>
+       </trans-unit>
+       <trans-unit id="tags.link">
+            <source>tags.link</source>
+            <target>Tagi</target>
+       </trans-unit>
+        <trans-unit id="users.link">
+           <source>users.link</source>
+           <target>Użytkownicy</target>
+       </trans-unit>
+       <trans-unit id="action_logout">
+            <source>action_logout</source>
+            <target>Wyloguj się</target>
+       </trans-unit>
+       <trans-unit id="action_login">
+            <source>action_login</source>
+            <target>Zaloguj się</target>
+       </trans-unit>
+       <trans-unit id="label.login">
+            <source>label.login</source>
+            <target>Logowanie</target>
+       </trans-unit>
+       <trans-unit id="label.register">
+           <source>label.register</source>
+           <target>Rejestracja</target>
+       </trans-unit>
+       <trans-unit id="action_register">
+            <source>action_register</source>
+            <target>Zarejestruj się</target>
+       </trans-unit>
+       <trans-unit id="title.tag_list">
+            <source>title.tag_list</source>
+            <target>Tagi</target>
+        </trans-unit>
+        <trans-unit id="tag.id">
+            <source>tag.id</source>
+            <target>Id</target>
+        </trans-unit>
+        <trans-unit id="label.tag_name">
+            <source>label.tag_name</source>
+            <target>Nazwa tagu</target>
+        </trans-unit>
+        <trans-unit id="label.createdAt">
+            <source>label.createdAt</source>
+            <target>Utworzono</target>
+        </trans-unit>
+        <trans-unit id="label.updatedAt">
+            <source>label.updatedAt</source>
+            <target>Edytowano</target>
+        </trans-unit>
+        <trans-unit id="create.tag">
+            <source>create.tag</source>
+            <target>Utwórz tag</target>
+          </trans-unit>
+          <trans-unit id="show.tag">
+            <source>show.tag</source>
+            <target>Pokaż tag</target>
+         </trans-unit>
+         <trans-unit id="edit.tag">
+            <source>edit.tag</source>
+            <target>Edytuj tag</target>
+         </trans-unit>
+         <trans-unit id="delete.tag">
+            <source>delete.tag</source>
+            <target>Usuń tag</target>
+         </trans-unit>
+         <trans-unit id="label.email">
+             <source>label.email</source>
+             <target>Email</target>
+          </trans-unit>
+          <trans-unit id="label.password">
+             <source>label.password</source>
+             <target>Hasło</target>
+          </trans-unit>
+          <trans-unit id="label.repeat_password">
+            <source>label.repeat_password</source>
+            <target>Powtórz hasło</target>
+         </trans-unit>
+         <trans-unit id="label.agree_terms">
+            <source>label.agree_terms</source>
+            <target>Akceptuję regulamin</target>
+         </trans-unit>
+         <trans-unit id="label.note">
+            <source>label.note</source>
+            <target>Notatka</target>
+         </trans-unit>
+         <trans-unit id="clear.filters">
+             <source>clear.filters</source>
+             <target>Wyczyść filtry</target>
+          </trans-unit>
+          <trans-unit id="edit.user">
+             <source>edit.user</source>
+             <target>Ustawienia konta</target>
+          </trans-unit>
+          <trans-unit id="label.user_email">
+             <source>label.user_email</source>
+             <target>Email użytkownika</target>
+          </trans-unit>
+          <trans-unit id="label.roles">
+             <source>label.roles</source>
+             <target>Role użytkownika</target>
+          </trans-unit>
+          <trans-unit id="edit.user_data">
+             <source>edit.user_data</source>
+             <target>Edytuj dane użytkownika</target>
+          </trans-unit>
+          <trans-unit id="show.user">
+             <source>show.user</source>
+             <target>Pokaż użytkownika</target>
+          </trans-unit>
+          <trans-unit id="delete.user">
+             <source>delete.user</source>
+             <target>Usuń użytkownika</target>
+          </trans-unit>
+          <trans-unit id="edit.user_change_password">
+             <source>edit.user_change_password</source>
+             <target>Zmień hasło</target>
+          </trans-unit>
+          <trans-unit id="edit.user_change_entitlements">
+             <source>edit.user_change_entitlements</source>
+             <target>Zmień uprawnienia</target>
+          </trans-unit>
+          <trans-unit id="title.user_list">
+             <source>title.user_list</source>
+             <target>Użytkownicy</target>
+          </trans-unit>
+          <trans-unit id="label.admin">
+             <source>label.admin</source>
+             <target>ADMINISTRATOR</target>
+          </trans-unit>
+          <trans-unit id="label.block">
+             <source>label.block</source>
+             <target>Zablokuj użytkownika</target>
+          </trans-unit>
+          <trans-unit id="label.blocked">
+             <source>label.blocked</source>
+             <target>ZABLOKOWANY</target>
+          </trans-unit>
+          <trans-unit id="label.search">
+             <source>label.search</source>
+             <target>Szukaj</target>
+          </trans-unit>
+          <trans-unit id="user.details">
+              <source>user.details</source>
+              <target>Szczegóły użytkownika</target>
+           </trans-unit>
+           <trans-unit id="contact.details">
+              <source>contact.details</source>
+              <target>Szczegóły kontaktu</target>
+           </trans-unit>
+           <trans-unit id="category.details">
+              <source>category.details</source>
+              <target>Szczegóły kategorii</target>
+           </trans-unit>
+           <trans-unit id="tag.details">
+              <source>tag.details</source>
+              <target>Szczegóły tagu</target>
+           </trans-unit>
+           <trans-unit id="event.details">
+              <source>event.details</source>
+              <target>Szczegóły wydarzenia</target>
+           </trans-unit>
+           <trans-unit id="Year">
+              <source>Year</source>
+              <target>Rok</target>
+           </trans-unit>
+           <trans-unit id="Month">
+              <source>Month</source>
+              <target>Miesiąc</target>
+           </trans-unit>
+           <trans-unit id="Day">
+              <source>Day</source>
+              <target>Dzień</target>
+           </trans-unit>
+           <trans-unit id="Hour">
+              <source>Hour</source>
+              <target>Godzina</target>
+           </trans-unit>
+           <trans-unit id="Minute">
+              <source>Minute</source>
+              <target>Minuta</target>
+           </trans-unit>
+    </body>
+  </file>
+</xliff>
