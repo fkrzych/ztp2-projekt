@@ -25,8 +25,6 @@ class CategoryFixtures extends AbstractBaseFixtures
         $this->createMany(20, 'categories', function (int $i) {
             $category = new Category();
             $category->setName($this->faker->unique()->word);
-            $category->setCreatedAt($this->faker->dateTimeBetween('-100 days', '4 days'));
-            $category->setUpdatedAt($this->faker->dateTimeBetween('-100 days', '4 days'));
 
             return $category;
         });

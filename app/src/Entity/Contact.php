@@ -52,14 +52,6 @@ class Contact
     private ?User $author = null;
 
     /**
-     * Note.
-     */
-    #[ORM\Column(type: 'text', nullable: true)]
-    #[Assert\Type('string')]
-    #[Assert\Length(min: 3, max: 255)]
-    private ?string $note = null;
-
-    /**
      * Constructor.
      */
     public function __construct()
