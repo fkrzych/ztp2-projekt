@@ -66,9 +66,7 @@ class EventType extends AbstractType
                 EntityType::class,
                 [
                     'class' => Category::class,
-                    'choice_label' => function ($category): string {
-                        return $category->getName();
-                    },
+                    'choice_label' => fn($category): string => $category->getName(),
                     'label' => 'label.category',
                     'placeholder' => 'label.none',
                     'required' => true,

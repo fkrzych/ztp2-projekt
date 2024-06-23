@@ -19,32 +19,14 @@ use Knp\Component\Pager\PaginatorInterface;
 class CategoryService implements CategoryServiceInterface
 {
     /**
-     * Category repository.
-     */
-    private CategoryRepository $categoryRepository;
-
-    /**
-     * Event repository.
-     */
-    private EventRepository $eventRepository;
-
-    /**
-     * Paginator.
-     */
-    private PaginatorInterface $paginator;
-
-    /**
      * Constructor.
      *
      * @param CategoryRepository $categoryRepository Category Repository
      * @param EventRepository    $eventRepository    Event Repository
      * @param PaginatorInterface $paginator          Paginator
      */
-    public function __construct(CategoryRepository $categoryRepository, EventRepository $eventRepository, PaginatorInterface $paginator)
+    public function __construct(private readonly CategoryRepository $categoryRepository, private readonly EventRepository $eventRepository, private readonly PaginatorInterface $paginator)
     {
-        $this->categoryRepository = $categoryRepository;
-        $this->eventRepository = $eventRepository;
-        $this->paginator = $paginator;
     }
 
     /**
@@ -85,7 +67,7 @@ class CategoryService implements CategoryServiceInterface
         try {
             $result = $this->eventRepository->countByCategory($category);
 
-            return !($result > 0);
+            return $result <= 0;
         } catch (NoResultException|NonUniqueResultException) {
             return false;
         }

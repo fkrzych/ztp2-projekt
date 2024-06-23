@@ -53,26 +53,6 @@ class Category
     #[Gedmo\Slug(fields: ['name'])]
     private ?string $slug = null;
 
-//    /**
-//     * Created at.
-//     *
-//     * @var DateTime|null
-//     */
-//    #[ORM\Column(type: 'datetime')]
-//    #[Assert\Type(DateTime::class)]
-//    #[Gedmo\Timestampable(on: 'create')]
-//    private ?DateTime $createdAt = null;
-//
-//    /**
-//     * Updated at.
-//     *
-//     * @var DateTime|null
-//     */
-//    #[ORM\Column(type: 'datetime')]
-//    #[Assert\Type(DateTime::class)]
-//    #[Gedmo\Timestampable(on: 'update')]
-//    private ?DateTime $updatedAt = null;
-
     /**
      * Getter for Id.
      *
@@ -121,45 +101,5 @@ class Category
     public function setSlug(string $slug): void
     {
         $this->slug = $slug;
-    }
-
-    /**
-     * Getter for createdAt.
-     *
-     * @return DateTime|null CreatedAt
-     */
-    public function getCreatedAt(): ?DateTime
-    {
-        return $this->createdAt;
-    }
-
-    /**
-     * Setter for createdAt.
-     *
-     * @param DateTime|null $createdAt CreatedAt
-     */
-    public function setCreatedAt(?DateTime $createdAt): void
-    {
-        $this->createdAt = $createdAt;
-    }
-
-    /**
-     * Getter for updatedAt.
-     *
-     * @return DateTime|null UpdatedAt
-     */
-    public function getUpdatedAt(): ?DateTime
-    {
-        return $this->updatedAt;
-    }
-
-    /**
-     * Setter for updatedAt.
-     *
-     * @param DateTime|null $updatedAt UpdatedAt
-     */
-    public function setUpdatedAt(?DateTime $updatedAt): void
-    {
-        $this->updatedAt = $updatedAt;
     }
 }
