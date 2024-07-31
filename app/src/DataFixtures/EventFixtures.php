@@ -6,6 +6,7 @@
 namespace App\DataFixtures;
 
 use App\Entity\Category;
+use App\Entity\Tag;
 use App\Entity\Event;
 use Doctrine\Common\DataFixtures\DependentFixtureInterface;
 
@@ -35,6 +36,12 @@ class EventFixtures extends AbstractBaseFixtures implements DependentFixtureInte
             $category = $this->getRandomReference('categories');
             $event->setCategory($category);
 
+            /* @var Tag $tag */
+            for ($i = 0; $i < 5; ++$i) {
+                $tag = $this->getRandomReference('tags');
+                $event->addTag($tag);
+            }
+
             /** @var User $author */
             $author = $this->getRandomReference('admins');
             $event->setAuthor($author);
@@ -55,6 +62,6 @@ class EventFixtures extends AbstractBaseFixtures implements DependentFixtureInte
      */
     public function getDependencies(): array
     {
-        return [CategoryFixtures::class, UserFixtures::class];
+        return [CategoryFixtures::class, TagFixtures::class, UserFixtures::class];
     }
 }

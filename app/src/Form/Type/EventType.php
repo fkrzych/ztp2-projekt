@@ -13,6 +13,7 @@ use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\DateTimeType;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
+use App\Form\DataTransformer\TagsDataTransformer;
 
 /**
  * Class EventType.
@@ -20,10 +21,17 @@ use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 class EventType extends AbstractType
 {
     /**
+     * Tags data transformer.
+     */
+    private TagsDataTransformer $tagsDataTransformer;
+
+
+    /**
      * Constructor.
      */
-    public function __construct()
+    public function __construct(TagsDataTransformer $tagsDataTransformer)
     {
+        $this->tagsDataTransformer = $tagsDataTransformer;
     }
 
     /**
@@ -70,6 +78,21 @@ class EventType extends AbstractType
                     'multiple' => false,
                 ]
             );
+
+
+        $builder->add(
+            'tags',
+            TextType::class,
+            [
+                'label' => 'label.tags',
+                'required' => false,
+                'attr' => ['max_length' => 128],
+            ]
+        );
+
+        $builder->get('tags')->addModelTransformer(
+            $this->tagsDataTransformer
+        );
     }
 
     /**

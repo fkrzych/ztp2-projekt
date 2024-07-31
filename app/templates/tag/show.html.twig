@@ -1,0 +1,19 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+    {{ 'tag.details'|trans }}
+{% endblock %}
+
+{% block body %}
+    {% if tag is defined and tag|length %}
+        <dl>
+            <dt>{{ 'label.tag_name'|trans }}</dt>
+            <dd>{{ tag.name }}</dd>
+        </dl>
+    {% else %}
+        <p>
+            {{ 'message.record_not_found'|trans }}
+        </p>
+    {% endif %}
+    <a href="{{ url('tag_index') }}" title="{{ 'tags.link'|trans }}">{{ 'tags.link'|trans }}</a>
+{% endblock %}

@@ -17,8 +17,6 @@ use Knp\Component\Pager\PaginatorInterface;
  */
 class EventService implements EventServiceInterface
 {
-    public $tagService;
-
     /**
      * Constructor.
      *
@@ -26,7 +24,7 @@ class EventService implements EventServiceInterface
      * @param PaginatorInterface       $paginator       Paginator
      * @param EventRepository          $eventRepository Event repository
      */
-    public function __construct(private readonly CategoryServiceInterface $categoryService, private readonly PaginatorInterface $paginator, private readonly EventRepository $eventRepository)
+    public function __construct(private readonly CategoryServiceInterface $categoryService, private readonly TagServiceInterface $tagService, private readonly PaginatorInterface $paginator, private readonly EventRepository $eventRepository)
     {
     }
 

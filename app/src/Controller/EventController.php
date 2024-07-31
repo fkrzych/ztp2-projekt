@@ -232,7 +232,10 @@ class EventController extends AbstractController
      */
     private function getFilters(Request $request): array
     {
-        return ['category_id' => $request->query->getInt('filters_category_id')];
+        $filters['category_id'] = $request->query->getInt('filters_category_id');
+        $filters['tag_id'] = $request->query->getInt('filters_tag_id');
+
+        return $filters;
     }
 
     /**

@@ -6,6 +6,7 @@
 namespace App\DataFixtures;
 
 use App\Entity\Contact;
+use App\Entity\Tag;
 use Doctrine\Common\DataFixtures\DependentFixtureInterface;
 
 /**
@@ -30,6 +31,12 @@ class ContactFixtures extends AbstractBaseFixtures implements DependentFixtureIn
             $contact = new Contact();
             $contact->setName($this->faker->firstName);
             $contact->setPhone($this->faker->phoneNumber);
+
+            /* @var Tag $tag */
+            for ($i = 0; $i < 5; ++$i) {
+                $tag = $this->getRandomReference('tags');
+                $contact->addTag($tag);
+            }
 
             /** @var User $author */
             $author = $this->getRandomReference('admins');

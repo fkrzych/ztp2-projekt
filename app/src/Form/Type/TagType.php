@@ -1,21 +1,20 @@
 <?php
 /**
- * Change Password type.
+ * Tag type.
  */
 
 namespace App\Form\Type;
 
-use App\Entity\User;
+use App\Entity\Tag;
 use Symfony\Component\Form\AbstractType;
-use Symfony\Component\Form\Extension\Core\Type\RepeatedType;
-use Symfony\Component\Form\Extension\Core\Type\PasswordType;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
 /**
- * Class ChangePasswordType.
+ * Class TagType.
  */
-class ChangePasswordType extends AbstractType
+class TagType extends AbstractType
 {
     /**
      * Builds the form.
@@ -30,12 +29,15 @@ class ChangePasswordType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
-        $builder->add('password', RepeatedType::class, [
-            'type' => PasswordType::class,
-            'invalid_message' => 'message.password_not_match',
-            'first_options' => ['label' => 'label.password'],
-            'second_options' => ['label' => 'label.repeat_password'],
-        ]);
+        $builder->add(
+            'name',
+            TextType::class,
+            [
+                'label' => 'label.tag_name',
+                'required' => true,
+                'attr' => ['max_length' => 45],
+            ]
+        );
     }
 
     /**
@@ -45,7 +47,7 @@ class ChangePasswordType extends AbstractType
      */
     public function configureOptions(OptionsResolver $resolver): void
     {
-        $resolver->setDefaults(['data_class' => User::class]);
+        $resolver->setDefaults(['data_class' => Tag::class]);
     }
 
     /**
@@ -58,6 +60,6 @@ class ChangePasswordType extends AbstractType
      */
     public function getBlockPrefix(): string
     {
-        return 'user';
+        return 'tag';
     }
 }

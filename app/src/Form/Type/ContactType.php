@@ -10,6 +10,7 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use App\Form\DataTransformer\TagsDataTransformer;
 
 /**
  * Class ContactType.
@@ -17,10 +18,18 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 class ContactType extends AbstractType
 {
     /**
-     * Constructor.
+     * Tags data transformer.
      */
-    public function __construct()
+    private TagsDataTransformer $tagsDataTransformer;
+
+    /**
+     * Constructor.
+     *
+     * @param TagsDataTransformer $tagsDataTransformer Tags data transformer
+     */
+    public function __construct(TagsDataTransformer $tagsDataTransformer)
     {
+        $this->tagsDataTransformer = $tagsDataTransformer;
     }
 
     /**
@@ -52,6 +61,10 @@ class ContactType extends AbstractType
                     'required' => true,
                     'attr' => ['max_length' => 20], ]
             );
+
+        $builder->get('tags')->addModelTransformer(
+            $this->tagsDataTransformer
+        );
     }
 
     /**

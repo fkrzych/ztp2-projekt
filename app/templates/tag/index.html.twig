@@ -1,0 +1,52 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+    {{ 'title.tag_list'|trans }}
+{% endblock %}
+
+{% block body %}
+    <h1>{{ 'title.tag_list'|trans }}</h1>
+    <div class="link-space-between">
+        <a href="{{ url('main_index') }}" title="{{ 'main.link'|trans }}">{{ 'main.link'|trans }}</a>
+        <a href="{{ url('tag_create') }}" title="{{ 'create.tag'|trans }}">{{ 'create.tag'|trans }}</a>
+    </div>
+    {% if pagination is defined and pagination.items|length %}
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th>{{ knp_pagination_sortable(pagination, 'tag.id'|trans, 'tag.id') }}</th>
+                <th>{{ knp_pagination_sortable(pagination, 'label.tag_name'|trans, 'tag.name') }}</th>
+                <th scope="col">
+                    {{ 'label.actions'|trans }}
+                </th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for tag in pagination.items %}
+                <tr>
+                    <td>{{ tag.id }}</td>
+                    <td>{{ tag.name }}</td>
+                    <td>
+                        <a href="{{ url('tag_show', {'id': tag.id}) }}" title="{{ 'show.tag'|trans }}">{{ 'show.tag'|trans }}</a>
+                        <a href="{{ url('tag_edit', {'id': tag.id}) }}" title="{{ 'edit.tag'|trans }}">{{ 'edit.tag'|trans }}</a>
+                        <a href="{{ url('tag_delete', {'id': tag.id}) }}" title="{{ 'delete.tag'|trans }}">{{ 'delete.tag'|trans }}</a>
+                    </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+        <div class="navigation text-center">
+            {{ knp_pagination_render(pagination) }}
+        </div>
+    {% else %}
+        <p>
+            {{ 'message.no_data'|trans }}
+        </p>
+    {% endif %}
+    <div class="link-centered">
+        <a href="{{ url('event_index') }}" title="{{ 'events.link'|trans }}">{{ 'events.link'|trans }}</a>
+        <a href="{{ url('contact_index') }}" title="{{ 'contacts.link'|trans }}">{{ 'contacts.link'|trans }}</a>
+        <a href="{{ url('category_index') }}" title="{{ 'categories.link'|trans }}">{{ 'categories.link'|trans }}</a>
+        <a href="{{ url('user_index') }}" title="{{ 'users.link'|trans }}">{{ 'users.link'|trans }}</a>
+    </div>
+{% endblock  %}
