@@ -5,15 +5,21 @@
 
 namespace App\Controller;
 
+use App\Dto\ContactListInputFiltersDto;
+use App\Dto\TaskListInputFiltersDto;
 use App\Entity\Contact;
 use App\Entity\User;
 use App\Form\Type\ContactType;
 use App\Repository\ContactRepository;
+use App\Resolver\ContactListInputFiltersDtoResolver;
+use App\Resolver\TaskListInputFiltersDtoResolver;
 use App\Service\ContactServiceInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Form\Extension\Core\Type\FormType;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpKernel\Attribute\MapQueryParameter;
+use Symfony\Component\HttpKernel\Attribute\MapQueryString;
 use Symfony\Contracts\Translation\TranslatorInterface;
 
 /**
@@ -39,18 +45,43 @@ class ContactController extends AbstractController
      *
      * @return Response HTTP response
      */
+//    #[\Symfony\Component\Routing\Attribute\Route(
+//        name: 'contact_index',
+//        methods: 'GET'
+//    )]
+//    public function index(Request $request): Response
+//    {
+//        $filters = $this->getFilters($request);
+//
+//        /** @var User $user */
+//        $user = $this->getUser();
+//        $pagination = $this->contactService->getPaginatedList(
+//            $request->query->getInt('page', 1),
+//            $user,
+//            $filters
+//        );
+//
+//        return $this->render('contact/index.html.twig', ['pagination' => $pagination]);
+//    }
+
+    /**
+     * Index action.
+     *
+     * @param ContactListInputFiltersDto $filters Input filters
+     * @param int                     $page    Page number
+     *
+     * @return Response HTTP response
+     */
     #[\Symfony\Component\Routing\Attribute\Route(
         name: 'contact_index',
         methods: 'GET'
     )]
-    public function index(Request $request): Response
+    public function index(#[MapQueryString(resolver: ContactListInputFiltersDtoResolver::class)] ContactListInputFiltersDto $filters, #[MapQueryParameter] int $page = 1): Response
     {
-        $filters = $this->getFilters($request);
-
         /** @var User $user */
         $user = $this->getUser();
         $pagination = $this->contactService->getPaginatedList(
-            $request->query->getInt('page', 1),
+            $page,
             $user,
             $filters
         );

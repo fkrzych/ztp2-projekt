@@ -28,8 +28,9 @@
                     <td>{{ user.email }}</td>
                     <td>{{ user.roles|join(' | ') }}</td>
                     <td>
-                        <a href="{{ url('user_show', {'id': user.id}) }}" title="{{ 'show.user'|trans }}">{{ 'show.user'|trans }}
-                        <a href="{{ url('user_change_entitlements', {'id': user.id}) }}" title="{{ 'edit.user_change_entitlements'|trans}}">{{ 'edit.user_change_entitlements'|trans }}</a>
+                        <a href="{{ url('user_show', {'id': user.id}) }}" title="{{ 'show.user'|trans }}">{{ 'show.user'|trans }}</a>
+                        <a href="{{ url('user_edit', {'id': user.id}) }}" title="{{ 'edit.user_data'|trans}}">{{ 'edit.user_data'|trans }}</a>
+                        <a href="{{ url('user_change_password', {'id': user.id}) }}" title="{{ 'edit.user_change_password'|trans}}">{{ 'edit.user_change_password'|trans }}</a>
                     </td>
                 </tr>
             {% endfor %}
@@ -47,5 +48,6 @@
         <a href="{{ url('event_index') }}" title="{{ 'events.link'|trans }}">{{ 'events.link'|trans }}</a>
         <a href="{{ url('contact_index') }}" title="{{ 'contacts.link'|trans }}">{{ 'contacts.link'|trans }}</a>
         <a href="{{ url('category_index') }}" title="{{ 'categories.link'|trans }}">{{ 'categories.link'|trans }}</a>
+        <a href="{{ url('tag_index') }}" title="{{ 'tags.link'|trans }}">{{ 'tags.link'|trans }}</a>
     </div>
 {% endblock %}

@@ -5,6 +5,7 @@
 
 namespace App\Service;
 
+use App\Dto\ContactListInputFiltersDto;
 use App\Entity\Contact;
 use App\Entity\User;
 use Knp\Component\Pager\Pagination\PaginationInterface;
@@ -23,18 +24,17 @@ interface ContactServiceInterface
      *
      * @return PaginationInterface<string, mixed> Paginated list
      */
-    public function getPaginatedList(int $page, User $author, array $filters = []): PaginationInterface;
+    public function getPaginatedList(int $page, User $author, ContactListInputFiltersDto $filters): PaginationInterface;
 
     /**
      * Get paginated list for search.
      *
      * @param int    $page    Page number
      * @param User   $author  Author
-     * @param string $pattern Pattern for searching
      *
      * @return PaginationInterface<string, mixed> Paginated list
      */
-    public function getPaginatedListSearch(int $page, User $author, string $pattern): PaginationInterface;
+//    public function getPaginatedListSearch(int $page, User $author, ContactListInputFiltersDto $filters): PaginationInterface;
 
     /**
      * Save entity.

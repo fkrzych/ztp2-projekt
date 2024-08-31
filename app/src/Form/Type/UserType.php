@@ -39,18 +39,6 @@ class UserType extends AbstractType
                 'attr' => ['max_length' => 64],
             ]
         );
-        if (in_array('ROLE_ADMIN', $options['role'])) {
-            $builder->add(
-                'roles',
-                ChoiceType::class,
-                [
-                    'label' => 'label.block',
-                    'choices' => ['label.blocked' => 'ROLE_BLOCKED'],
-                    'expanded' => true,
-                    'multiple' => true,
-                ]
-            );
-        }
     }
 
     /**

@@ -36,9 +36,11 @@
                             <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
                                 {% if contact.tags is defined and contact.tags|length %}
                                     {% for tag in contact.tags %}
-                                        <li class="dropdown-item"><a href="{{ url('contact_index', {'filters.tag_id' : tag.id}) }}" title="{{ tag.name }}">
+                                        <li class="dropdown-item">
+                                            <a href="{{ url('contact_index', {'tagId' : tag.id}) }}" title="{{ tag.name }}">
                                                 {{ tag.name }}
-                                            </a></li>
+                                            </a>
+                                        </li>
                                     {% endfor %}
                                 {% else %}
                                     &nbsp;

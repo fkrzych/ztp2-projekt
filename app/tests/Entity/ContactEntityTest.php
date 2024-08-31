@@ -16,13 +16,13 @@ class ContactEntityTest extends TestCase
      */
     public function TestGetSetData(): void
     {
-        $testedPost = new Contact();
-        $testedPost->setName('Mariusz');
-        $testedPost->setPhone('123456789');
-        $testedPost->setAuthor(new User());
+        $testedContact = new Contact();
+        $testedContact->setName('Mariusz');
+        $testedContact->setPhone('123456789');
+        $testedContact->setAuthor(new User());
 
-        self::assertSame('Mariusz', $testedPost->getName());
-        self::assertSame('123456789', $testedPost->getPhone());
-        self::assertSame($testedPost->getAuthor(), $testedPost->getAuthor());
+        self::assertSame('Mariusz', $testedContact->getName());
+        self::assertSame('123456789', $testedContact->getPhone());
+        self::assertSame($testedContact->getAuthor(), $testedContact->getAuthor());
     }
 }

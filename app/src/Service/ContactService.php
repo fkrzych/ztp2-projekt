@@ -5,9 +5,12 @@
 
 namespace App\Service;
 
+use App\Dto\ContactListFiltersDto;
+use App\Dto\ContactListInputFiltersDto;
 use App\Entity\Contact;
 use App\Entity\User;
 use App\Repository\ContactRepository;
+use App\Repository\TagRepository;
 use Doctrine\ORM\NonUniqueResultException;
 use Knp\Component\Pager\Pagination\PaginationInterface;
 use Knp\Component\Pager\PaginatorInterface;
@@ -17,15 +20,13 @@ use Knp\Component\Pager\PaginatorInterface;
  */
 class ContactService implements ContactServiceInterface
 {
-    public $tagService;
-
     /**
      * Constructor.
      *
      * @param PaginatorInterface $paginator         Paginator
      * @param ContactRepository  $contactRepository Contact repository
      */
-    public function __construct(private readonly PaginatorInterface $paginator, private readonly ContactRepository $contactRepository)
+    public function __construct(private readonly PaginatorInterface $paginator, private readonly ContactRepository $contactRepository, private readonly TagServiceInterface $tagService, private readonly CategoryServiceInterface $categoryService)
     {
     }
 
@@ -40,32 +41,31 @@ class ContactService implements ContactServiceInterface
      *
      * @throws NonUniqueResultException
      */
-    public function getPaginatedList(int $page, User $author, array $filters = []): PaginationInterface
-    {
-        $filters = $this->prepareFilters($filters);
-
-        return $this->paginator->paginate(
-            $this->contactRepository->queryByAuthor($author, $filters),
-            $page,
-            ContactRepository::PAGINATOR_ITEMS_PER_PAGE
-        );
-    }
+//    public function getPaginatedList(int $page, User $author, array $filters = []): PaginationInterface
+//    {
+//        $filters = $this->prepareFilters($filters);
+//
+//        return $this->paginator->paginate(
+//            $this->contactRepository->queryByAuthor($author, $filters),
+//            $page,
+//            ContactRepository::PAGINATOR_ITEMS_PER_PAGE
+//        );
+//    }
 
     /**
      * Get paginated list for search.
      *
      * @param int    $page    Page number
      * @param User   $author  Author
-     * @param string $pattern Pattern for searching
      *
      * @return PaginationInterface<string, mixed> Paginated list
      */
-    public function getPaginatedListSearch(int $page, User $author, string $pattern): PaginationInterface
+    public function getPaginatedList(int $page, User $author, ContactListInputFiltersDto $filters): PaginationInterface
     {
-        $pattern = $this->preparePattern($pattern);
+        $filters = $this->prepareFilters($filters);
 
         return $this->paginator->paginate(
-            $this->contactRepository->querySearch($author, $pattern),
+            $this->contactRepository->queryByAuthor($author, $filters),
             $page,
             ContactRepository::PAGINATOR_ITEMS_PER_PAGE
         );
@@ -112,17 +112,32 @@ class ContactService implements ContactServiceInterface
      *
      * @throws NonUniqueResultException
      */
-    private function prepareFilters(array $filters): array
+//    private function prepareFilters(array $filters): array
+//    {
+//        $resultFilters = [];
+//
+//        if (!empty($filters['tag_id'])) {
+//            $tag = $this->tagService->findOneById($filters['tag_id']);
+//            if ($tag instanceof \App\Entity\Tag) {
+//                $resultFilters['tag'] = $tag;
+//            }
+//        }
+//
+//        return $resultFilters;
+//    }
+
+    /**
+     * Prepare filters for the tasks list.
+     *
+     * @param TaskListInputFiltersDto $filters Raw filters from request
+     *
+     * @return TaskListFiltersDto Result filters
+     */
+    private function prepareFilters(ContactListInputFiltersDto $filters): ContactListFiltersDto
     {
-        $resultFilters = [];
-
-        if (!empty($filters['tag_id'])) {
-            $tag = $this->tagService->findOneById($filters['tag_id']);
-            if ($tag instanceof \App\Entity\Tag) {
-                $resultFilters['tag'] = $tag;
-            }
-        }
-
-        return $resultFilters;
+        return new ContactListFiltersDto(
+            null !== $filters->categoryId ? $this->categoryService->findOneById($filters->categoryId) : null,
+            null !== $filters->tagId ? $this->tagService->findOneById($filters->tagId) : null
+        );
     }
 }

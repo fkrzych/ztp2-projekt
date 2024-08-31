@@ -34,6 +34,7 @@
         {% if is_granted('IS_AUTHENTICATED_FULLY') %}
             <div class="app-user-options hidden">
                 <div>{{ app.user.email }}</div>
+                <a href="{{ url('settings_index', {'id': app.user.id}) }}" title="{{ 'edit.user'|trans}}">{{ 'edit.user'|trans}}</a>
                 <a href="{{ url('app_logout') }}">{{ 'action_logout'|trans }}</a>
             </div>
         {% endif %}
